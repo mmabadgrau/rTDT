@@ -1,0 +1,87 @@
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+ <link href="/css/normal.css" rel="stylesheet" type="text/css">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<p><font size="4"><b><font size="5">Users' documentation for rTDT in c++</font></b></font></p>
+<p><br>
+  <b><font size="4">Installation</font></b></p>
+<p><b>Compiled version:</b></p>
+<p>Compiled version for linux.-After you have succesfully obtained the archive 
+  you can execute the following Unix commands to install the program:</p>
+<ul>
+  <li>gunzip rTDT1.0.gz</li>
+<li>chmod 755 rTDT.out</li>
+</ul>
+<p><b>Source code version:</b></p>
+<p>Source code version for linux.-After you have succesfully obtained the archive 
+  you can execute the following Unix commands to install the program:</p>
+<ul>
+  <li>tar xvzf rTDT1.0.tar.gz</li>
+  <li>make</li>
+</ul>
+<p><font size="4"><b>Execution</b></font></p>
+<p>To use rTDT, use the following command line:</p>
+<p>./rTDT1.0 &lt;filename&gt; &lt;#TotalSNPs&gt; &lt;#individuals&gt;</p>
+<p>where &lt;filename&gt; is the input file with format as shown below, &lt;#TotalSNPs&gt; 
+  the number of SNPs in the file and &lt;#individuals&gt; the number of individuals 
+  in the file.</p>
+<p>&nbsp;</p>
+<p><b>Format of the input file</b> </p>
+<p>A text file of SNP data set, one row per individual, 7 + 2x<i>TotalSNPs</i> 
+  columns, with <i>TotalSNPs</i> being the number of SNPs. Columns must be separared 
+  by a blank or tab character.Each column must contain an integer.
+ <!-- <a href=rTDT.zip>Download rTDT.1.0 for Matlab</a> -->
+  <a href=rTDTInputSample.inp>See an example of input file</a>.
+  </p>
+<p>Description of columns: </p>
+<ul>
+  <li>Column 1: family code </li>
+  <li>Column 2: individual code </li>
+  <li>Column 3: father code (0 if the individual is not a child)</li>
+  <li>Column 4: mother code (0 if the individual is not a child)</li>
+  <li>Column 5: gender (not used by rTDT)</li>
+  <li>Column 6: affection status (not used by rTDT)</li>
+  <li>Column 7: another individual id (not used by rTDT) </li>
+  <li>Columns 8 until 7+2*<i>TotalSNPs</i>: SNPs values (each SNP uses two contiguous 
+    columns). Example: if SNP1 value for an individual is 12 (heterozygous), column8 
+    will have the value 1 and column9 will have the 2.</li>
+</ul>
+<p><b>Output for the function rTDT</b></p>
+<p>Output will be written at a file with the same name that the input file name 
+  but with the extension &quot;.sal&quot;. The output file is a text file with 
+  one column per SNP separated by blanks, so there will be <i>TotalSNPs</i> columns.<br>
+  The file will have 12 rows:<br>
+</p>
+<p>Description of rows:</p>
+<ul>
+  <li>Row 1: b (=m3+m6+2m8+m9)</li>
+  <li>Row 2: c (=m4+m7+m9+2m10)</li>
+  <li>Row 3: b1 (=b+n9)</li>
+  <li>Row 4: c1 (=c+n11)</li>
+  <li>Row 5: bmax (=b+2xn2+n3+n5+n6+2xn8+2xn9+n10+n12+n13+n15+2xn16+n17) </li>
+  <li>Row 6: cmax (=c+n3+2xn4+n5+n7+2xn8+n10+2xn11+n12+n14+n15+2xn16+n17)</li>
+  <li>Row 7: t (=T(b,c)) (standard TDT)</li>
+  <li>Row 8: p value for t</li>
+  <li>Row 9: tmin (if b1&gt;cM then tmin=T(b1,cM) else if bM&lt;c1 then tmin=T(bM,c1)<br>
+    else Tmin=0)</li>
+  <li>Row 10: p value tmin</li>
+  <li>Row 11: tmax=max(T(bM,c1),T(b1,cM))</li>
+  <li>Row 12: p value tmax</li>
+</ul>
+<p>&nbsp;</p>
+
+<p><b>References</b></p>
+
+<p></p>
+
+
+<p>Sebastiani, Paola; Abad, Mar&iacute;a; Alpargu, Gulhan; Ramoni, Marco<br>
+Robust Transmission/Disequilibrium Test for Incomplete Family Genotypes<br>
+Genetics, Vol 168, 2329-2337</p>
+
+</body>
+</html>

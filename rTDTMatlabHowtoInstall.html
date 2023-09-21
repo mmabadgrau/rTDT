@@ -1,0 +1,180 @@
+<html>
+
+<head>
+
+<title>Software for rTDT</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+ <link href="/css/normal.css" rel="stylesheet" type="text/css">
+</head>
+
+
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<p align="center"><strong><font size="4"> </font></strong></p>
+
+<p><font size="4"><b>Users' documentation for rTDT in Matlab</b></font></p>
+
+<p><br>
+
+  <b>Overview</b></p>
+
+<!--<p>rTDT is a set of M-files 
+
+  for MatLab that can be used to compute TDT and rTDT, as shown in Sebastiani,zz,2003???.</p>-->
+
+<p>The archive rTDT contains 
+
+  the following M-files:</p>
+
+<ol>
+  <li>rTDT</li>
+  <li>EnesTrios</li>
+  <li>EmesTrios</li>
+  <li>IsAChild</li>
+  <li>NonMissingSNP</li>
+  <li>IsHetero</li>
+  <li>IsHomo1</li>
+  <li>IsHomo2</li>
+  <li>GetMajorAllele</li>
+  <li>Father</li>
+  <li>Mother</li>
+</ol>
+
+<p>The main function rTDT needs 
+
+  as an only argument a table with SNPs values. The rTDT function returns a table 
+
+  with <i>Chi-Square</i> for TDT and rTDT, p values and all the quantities needed 
+
+  to compute these values.</p>
+
+<p><b>Input for the function 
+
+  rTDT </b>  </p>
+
+<p>SNP dataset, one row per 
+
+  individual, 7 + 2x<i>TotalSNPs</i> columns, with <i>TotalSNPs</i> being the 
+
+  number of SNPs. Each column must contain an integer.</p>
+
+<p>Description of columns: 
+
+</p>
+
+<ul>
+
+  <li>Column 1: family code </li>
+
+  <li>Column 2: individual code </li>
+
+  <li>Column 3: father code 
+
+    (0 if the individual is not a child)</li>
+
+  <li>Column 4: mother code 
+
+    (0 if the individual is not a child)</li>
+
+  <li>Column 5: gender (not 
+
+    used)</li>
+
+  <li>Column 6: affection status 
+
+    (not used)</li>
+
+  <li>Column 7: another individual 
+
+    id (not used) </li>
+
+  <li>Columns 8 until 7+2*<i>TotalSNPs</i>: SNPs values (each SNP uses two contiguous 
+
+    columns). Example: if SNP1 value for an individual is 12 (heterozygous), column8 
+
+    will have the value 1 and column9 will have the 2.</li>
+
+</ul>
+
+<p><b>Output for the function 
+
+  rTDT</b></p>
+
+<p>Table 
+
+  <i>robustTDT</i>, with one column per SNP, then there will be <i>TotalSNPs</i> 
+
+ columns.<br>
+
+  The table has 45 rows.<br>
+
+</p>
+
+<p>Description of rows:</p>
+
+<ul>
+
+  <li>Rows 1 to 21: n1, n2, ..., n21</li>
+
+  <li>Rows 22 to 31: m1, m2, 
+
+    m3, ..., m10</li>
+
+  <li>Row 32: b (=m3+m6+2m8+m9)</li>
+
+  <li>Row 33: c (=m4+m7+m9+2m10)</li>
+
+  <li>Row 34: b1 (=b+n9)</li>
+
+  <li>Row 35: c1 (=c+n11)</li>
+
+  <li>Row 36: bmax (=b+2xn2+n3+n5+n6+2xn8+2xn9+n10+n12+n13+n15+2xn16+n17) 
+
+    </li>
+
+  <li>Row 37: cmax (=c+n3+2xn4+n5+n7+2xn8+n10+2xn11+n12+n14+n15+2xn16+n17)</li>
+
+  <li>Row 38: T(b,c) (standard 
+
+    TDT)</li>
+
+  <li>Row 39: T(bM,c1)</li>
+
+  <li>Row 40: T (b1,cM)</li>
+
+  <li>Row 41: Tmin (if b1&gt;cM 
+
+    then Tmin=T(b1,cM) else if bM&lt;c1 then Tmin=T(bM,c1)<br>
+
+    else Tmin=0)</li>
+
+  <li>Row 42: Tmax=max(T(bM,c1),T(b1,cM))</li>
+
+  <li>Row 43: pvalue T</li>
+
+  <li>Row 44: pvalue Tmin</li>
+
+  <li>Row 45: pvalue Tmax</li>
+
+</ul>
+
+<p>&nbsp;</p>
+
+<p><b>References</b></p>
+
+<p></p>
+
+
+
+
+<p>Sebastiani, Paola; Abad, Mar&iacute;a; Alpargu, Gulhan; Ramoni, Marco<br>
+Robust Transmission/Disequilibrium Test for Incomplete Family Genotypes<br>
+Genetics, Vol 168, 2329-2337</p>
+
+
+</body>
+
+</html>
+
